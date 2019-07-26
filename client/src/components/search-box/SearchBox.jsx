@@ -15,7 +15,7 @@ class SearchBox extends Component {
 			<>
 				<div className='search-box'>
 					<Link to='/'>
-						{searchBar.logo}
+						<figure>{searchBar.logo}</figure>
 					</Link>
 					<div className='search-input-container'>
 						<Link to='/item?search='>
