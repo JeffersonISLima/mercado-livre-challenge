@@ -1,8 +1,10 @@
-const createError = require('http-errors');
-const express = require('express');
+const cors = require('cors');
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const express = require('express');
+const createError = require('http-errors');
+const cookieParser = require('cookie-parser');
+
 
 const app = express();
 
@@ -17,6 +19,12 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Cors
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:3000'],
+}));
 
 // Routes
 const indexRouter = require('./routes/index');
