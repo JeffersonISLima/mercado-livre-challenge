@@ -1,15 +1,31 @@
-import React from 'react';
 import './App.css';
-import SearchBox from '../search-box/SearchBox';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <SearchBox />
-      </header>
-    </div>
-  );
+import React, { Component } from 'react';
+import { Route, Switch } from 'react-router-dom';
+
+import Home from '../home/Home';
+import SearchBox from '../search-box/SearchBox';
+import SearchResult from '../search-result/SearchResult';
+import ProductDetail from '../product-detail/ProductDetail';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <SearchBox />
+        </header>
+
+        <section>
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/item' component={SearchResult} />
+            <Route path="/item:id" component={ProductDetail} />
+          </Switch>
+        </section>
+      </div>
+    )
+  }
 }
 
 export default App;

@@ -1,32 +1,34 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+
 import './SearchBox.css';
 
 class SearchBox extends Component {
-  constructor() {
-    super();
-  }
 
-  render() {
-    const searchBar = {
-      logo: <img src="../images/logo.png" alt="lupa" alt="Imagem de uma lupa na barra de pesquisa." />,
-      lupa: <img className="img-lupa" src="../images/lupa.png" alt="lupa" alt="Imagem de uma lupa na barra de pesquisa." />,
-      input: <input type="search" name="search" placeholder="Buscar produtos, marcas e muito mais..." />
-    };
+	render() {
+		const searchBar = {
+			logo: <img src="../images/logo.png" alt="Imagem do logotipo do mercado livre." />,
+			input: <input type="search" name="search" placeholder="Buscar produtos, marcas e muito mais..." />
+		}
 
-    return (
-      <>
-        <div className='search-box'>
-          {searchBar.logo}
-          <div className='search-input-container'>
-            <form action="" className='input-field'>
-              {searchBar.input}
-              {searchBar.lupa}
-            </form>
-          </div>
-        </div>
-      </>
-    );
-  }
+		return (
+			<>
+				<div className='search-box'>
+					<Link to='/'>
+						{searchBar.logo}
+					</Link>
+					<div className='search-input-container'>
+						<Link to='/item?search='>
+							<form action="" className='input-field'>
+								{searchBar.input}
+								<i class="fas fa-search"></i>
+							</form>
+						</Link>
+					</div>
+				</div>
+			</>
+		)
+	}
 }
 
 export default SearchBox;

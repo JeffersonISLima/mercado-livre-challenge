@@ -4,7 +4,6 @@
 	justify-content: center;
 	align-items: center;
 	background-color: #ffE600;
-  color: darkblue;
 }
 
 .search-input-container {
@@ -20,16 +19,9 @@
   align-items: center;
 }
 
-.img-lupa {
-  width: 3%;
-  height: 5%;
-  margin-left: 1%;
-}
-
 input {
   border: 0 none;
   width: 93%;  
   height: 40px;
   font-size: 18px;
-  margin-right: 5px;
 }
