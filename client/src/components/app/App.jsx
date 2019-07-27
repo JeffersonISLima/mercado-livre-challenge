@@ -1,10 +1,9 @@
 import './App.css';
-
+import SearchBox from '../search-box/SearchBox';
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Home from '../home/Home';
-import SearchBox from '../search-box/SearchBox';
 import SearchResult from '../search-result/SearchResult';
 import ProductDetail from '../product-detail/ProductDetail';
 
@@ -19,8 +18,8 @@ class App extends Component {
         <section>
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/item' component={SearchResult} />
-            <Route path="/item:id" component={ProductDetail} />
+            <Route exact path='/items' component={SearchResult} />
+            <Route exact path="/items/:id" component={ProductDetail} />
           </Switch>
         </section>
       </div>

@@ -3,7 +3,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #ffE600;
+  background-color: #ffE600;
 }
 
 .search-input-container {
@@ -25,3 +25,4 @@ input {
   height: 40px;
   font-size: 18px;
 }
+

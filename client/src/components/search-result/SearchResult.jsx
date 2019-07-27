@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import SearchBox from '../search-box/SearchBox';
 
-// Aqui vou renderizar 4 objetos pesquisados e retornados pelo endpoint - cada objeto terá um link para a view detalhes do produto
 
 class SearchResult extends Component {
-  constructor(){
+  constructor() {
     super();
-    this.state = [];
+    this.state = {
+      products: []
+    }
+    this.callApiMeLi = this.callApiMeLi.bind(this);
   }
 
-  render(){
-    return(
+  callApiMeLi() {
+    axios.get(`http://localhost:5000/api/items`)
+      .then((response) => {
+        this.setState({ products: response.data });
+      })
+      .catch((error) => {
+        throw new Error(error)
+      });
+  }
+
+  componentDidMount() {
+    this.callApiMeLi();
+  }
+
+  render() {
+    return (
       <>
-        <h1>View Resultado da Pesquisa</h1>
+        {/* <h1 className="teste">ola mundo</h1> */}
+        pia
       </>
     )
   }
