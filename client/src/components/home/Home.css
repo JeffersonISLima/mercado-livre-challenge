@@ -1,9 +1,9 @@
 .first-section {
-  display: flex;
   justify-content: center;
+  color: #999999;
   margin-top: 20px;
   font-size: 30px;
-  color: #999999;
+  display: flex;
 }
 
 .second-section {
@@ -12,8 +12,8 @@
 }
 
 .third-section {
-  display: flex;
   margin-top: 10px;
+  display: flex;
   height: 400px;
 }
 
@@ -22,19 +22,19 @@
 }
 
 .column-middle {
-  flex: 80%;
   background-color: white;
   border-radius: 5px;
   position: relative;
   padding: 10px;
   height: 230px;
+  flex: 80%;
 }
 
 .column-middle:hover {
-  height: 280px;
-  cursor: pointer;
-  margin-top: 10px;
   box-shadow: 1px 1px 10px #333333;
+  margin-top: 10px;
+  cursor: pointer;
+  height: 280px;
 }
 
 .column-middle > .product-title {
@@ -51,10 +51,10 @@
 }
 
 .img-thumbnail {
-  height: 150px;
+  transform: translateX(-50%);
   position: aboslute;
   margin-left: 50%;
-  transform: translateX(-50%);
+  height: 150px;
 }
 
 .h5-price {

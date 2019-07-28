@@ -1,11 +1,11 @@
-import './App.css';
-import SearchBox from '../search-box/SearchBox';
-import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import React, { Component } from 'react';
 
-import Home from '../home/Home';
-import SearchResult from '../search-result/SearchResult';
 import ProductDetail from '../product-detail/ProductDetail';
+import SearchResult from '../search-result/SearchResult';
+import SearchBox from '../search-box/SearchBox';
+import Home from '../home/Home';
+import './App.css';
 
 class App extends Component {
   render() {
