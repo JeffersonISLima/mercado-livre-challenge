@@ -28,7 +28,13 @@ app.use(cors({
 
 // Routes
 const indexRouter = require('./routes/index');
+const items = require ('./routes/items');
+const categories = require ('./routes/categories');
+
 app.use('/api', indexRouter);
+app.use('/api/items', items);
+app.use('/api/categories', categories);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
