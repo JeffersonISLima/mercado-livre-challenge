@@ -27,8 +27,10 @@ app.use(cors({
 
 // Routes
 const indexRouter = require('./routes/index');
-const items = require ('./routes/items');
+const category = require('./routes/category');
+const items = require('./routes/items');
 
+app.use('/api/category', category);
 app.use('/api', indexRouter);
 app.use('/api/items', items);
 

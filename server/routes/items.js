@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require('axios');
 
 // Search Products List - Limit items: 40
+// Endpoint send product category name too 
 router.get('/', (req, res, next) => {
   const {
     search
