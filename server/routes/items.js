@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-// Search Products List
+// Search Products List - Limit items: 40
 router.get('/', (req, res, next) => {
   const {
     search
   } = req.query;
-  axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=${ search }`)
+  axios.get(`https://api.mercadolibre.com/sites/MLA/search?limit=40&q=${ search }`)
     .then((response) => {
       const searchResult = [...response.data.results];
       response.data.results.map((categoryId) => {
@@ -20,8 +20,8 @@ router.get('/', (req, res, next) => {
           })
       })
     })
-    .catch((error) => {
-      throw new Error(error);
+    .catch((err) => {
+      throw new Error(err);
     })
 });
 
