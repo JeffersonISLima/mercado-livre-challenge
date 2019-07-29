@@ -1,14 +1,14 @@
 /* Search box */
 .search-box {
   background-color: #ffE600;
-	justify-content: center;
-	align-items: center;
-	display: flex;
-	height: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 60px;
 }
 
 .search-input-container {
-  padding-right: 1%; 
+  padding-right: 1%;
   padding-left: 1%;
   width: 60%;
 }
@@ -24,28 +24,26 @@ input {
   font-size: 18px;
   border: 0 none;
   height: 40px;
-  width: 93%;  
+  width: 93%;
 }
 
 /* Results of the search */
-.border { 
-  border: 2px solid red; /* APAGAR AO FINAL - BORDA AUXILIAR */
-}
-
-.categoria {
+.product-category {
   padding-left: 16px;
   margin-right: auto;
   margin-left: auto;
   margin-top: 16px;
+  color: #999999;
   font-size: 14px;
   width: 80%;
 }
 
-.second-section-search-box {
+.third-section-search-box {
   background-color: white;
   margin-bottom: 100px;
-  margin-right: auto; 
+  margin-right: auto;
   margin-left: auto;
+  margin-top: 16px;
   padding: 16px;
   height: auto;
   width: 80%;
@@ -62,4 +60,35 @@ input {
   border-radius: 4px;
   height: 180px;
   width: 180px;
+}
+
+.column-middle-search-box {
+  padding-left: 16px;
+  padding-top: 40px;
+  color: #666666;
+  flex: 80%;
+}
+
+.column-middle-search-box > h4 {
+  padding-top: 32px;
+}
+
+.column-middle-search-box > div {
+  align-items: center;
+  display: flex;
+  left: 30px;
+}
+
+.column-middle-search-box > div > h2 {
+  font-size: 24px;
+}
+
+.column-middle-search-box > div > figure {
+  padding-left: 15px;
+}
+
+#column-aux {
+  padding-top: 50px;
+  color: #666666;
+  font-size: 12px;
 }
