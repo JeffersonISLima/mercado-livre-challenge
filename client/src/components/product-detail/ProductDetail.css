@@ -1,0 +1,50 @@
+.border {
+  border: 1px solid red;
+  margin: -1px;
+}
+
+.second-section-product-detail {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 16px;
+  height: 350px;
+  width: 80%;
+}
+
+.third-section-product-detail {
+  padding-left: 32px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+}
+
+.third-section-product-detail > p {
+  padding-bottom: 32px;
+  padding-top: 32px;
+}
+
+.row-product-detail {
+  display: flex;  
+  height: 350px;
+}
+
+.column-image-product-detail {
+  display: flex;
+  flex: 60%;
+}
+
+.column-aux-product-detail {
+  flex: 40%;
+}
+
+.image-product {
+  margin: auto;
+}
+
+.paid-market-true {
+  color: darkgreen;
+}
+
+.paid-market-false {
+  color: red;
+}

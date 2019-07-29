@@ -8,7 +8,7 @@ class SearchBox extends Component {
 		super();
 		this.state = {
 			titleProduct: [],
-			product: '',
+			product: ''
 		}
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -22,8 +22,16 @@ class SearchBox extends Component {
 	}
 
 	render() {
+		const searchBar = {
+			input: <input type="search" name="product" value={this.state.product} placeholder="Buscar produtos, marcas e muito mais..." onChange={e => this.handleChange(e)} />,
+			freeShipping: <img src="../images/free-shipping.png" alt="Imagem de um caminhão informando o frete grátis." />,
+			logo: <img src="../images/logo.png" title="Home Page" alt="Imagem do logotipo do mercado livre." />,
+			url: 'http://localhost:3000/items',
+			urlObject: window.location.href
+		}
+
 		if (this.state.product.length !== 0) {
-			axios.get(`http://localhost:5000/api/items?search=${this.state.product.toUpperCase()}`)
+			axios.get(`http://localhost:5000/api/items?search=${this.state.product}`)
 				.then((response) => {
 					this.setState({
 						categoryProducty: response.data.categoryName,
@@ -33,14 +41,6 @@ class SearchBox extends Component {
 				.catch((error) => {
 					throw new Error(error);
 				});
-		}
-
-		const searchBar = {
-			freeShipping: <img src="../images/free-shipping.png" alt="Imagem de um caminhão informando o frete grátis." />,
-			input: <input type="search" name="product" value={this.state.product} placeholder="Buscar produtos, marcas e muito mais..." onChange={e => this.handleChange(e)} />,
-			logo: <img src="../images/logo.png" title="Home Page" alt="Imagem do logotipo do mercado livre." />,
-			url: 'http://localhost:3000/items',
-			urlObject: window.location.href
 		}
 
 		if ((this.state.product.length !== 0) && (searchBar.urlObject === searchBar.url)) {
@@ -73,7 +73,7 @@ class SearchBox extends Component {
 							<>
 								<Link to={`/items/${product.id}`}>
 									<div className="card row" key={idx}>
-										<div class="column-aux">
+										<div className="column-aux">
 											<img className='images' src={product.thumbnail} alt={product.title} />
 										</div>
 
@@ -81,8 +81,8 @@ class SearchBox extends Component {
 											<div> <h2>R$ {product.price}</h2> {product.shipping.free_shipping ? <figure>{searchBar.freeShipping}</figure> : ''}</div>
 											<h4>{product.title}</h4>
 										</div>
-										
-										<div class="column-aux" id="column-aux">
+
+										<div className="column-aux" id="column-aux">
 											<h4>{product.address.city_name.toUpperCase()}</h4>
 										</div>
 									</div>
