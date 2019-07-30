@@ -15,9 +15,12 @@ router.get('/', (req, res, next) => {
         axios.get(`https://api.mercadolibre.com/categories/${ categoryId.category_id }`)
           .then((response) => {
             res.json({
-              searchResult: searchResult,
-              categoryName: response.data.name
-            })
+                searchResult: searchResult,
+                categoryName: response.data.name
+              })
+              .catch((err) => {
+                throw new Error(err);
+              });
           })
       })
     })
