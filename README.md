@@ -21,7 +21,7 @@ npm install
 
 ## Uso 
 
-Digite npm start no terminal dentro das pastas pra iniciar ambos os servidores.
+Digite npm start no terminal dentro das pastas para iniciar ambos os servidores.
 O server é executado na porta 5000.
 O client é executado na porta 3000.
 
