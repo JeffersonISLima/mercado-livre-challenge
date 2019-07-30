@@ -29,10 +29,11 @@ class SearchBox extends Component {
 			url: 'http://localhost:3000/items',
 			urlObject: window.location.href
 		}
+		const Fragment = React.Fragment;
 
 		if (this.state.product.length !== 0) {
 			const { product } = this.state;
-			axios.get(`http://localhost:5000/api/items?search=${ product }`)
+			axios.get(`http://localhost:5000/api/items?search=${product}`)
 				.then((response) => {
 					this.setState({
 						categoryProducty: response.data.categoryName,
@@ -71,15 +72,20 @@ class SearchBox extends Component {
 
 					<section className="third-section-search-box">
 						{this.state.titleProduct.map((product, idx) =>
-							<>
+							<Fragment key={idx}>
 								<Link to={`/items/${product.id}`}>
-									<div className="card row" key={idx}>
+									<div className="card row">
 										<div className="column-aux">
 											<img className='images' src={product.thumbnail} alt={product.title} />
 										</div>
 
 										<div className="column-middle-search-box">
-											<div> <h2>$ {product.price}</h2> {product.shipping.free_shipping ? <figure>{searchBar.freeShipping}</figure> : ''}</div>
+											<div>
+												<h2>$ {product.price}</h2>
+												{product.shipping.free_shipping
+													? <figure>{searchBar.freeShipping}</figure>
+													: ''}
+											</div>
 											<h4>{product.title}</h4>
 										</div>
 
@@ -88,7 +94,7 @@ class SearchBox extends Component {
 										</div>
 									</div>
 								</Link>
-							</>
+							</Fragment>
 						).slice(0, 4)
 						}
 					</section>

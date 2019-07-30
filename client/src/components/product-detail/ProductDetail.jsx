@@ -23,8 +23,9 @@ class ProductDetail extends Component {
         this.setState({
           imageProduct: response.data.pictures[0].url,
           productAllInformations: response.data
-        });
+        })
         this.productCategory();
+        this.productDescription();
       })
       .catch((err) => {
         throw new Error(err);
@@ -59,7 +60,6 @@ class ProductDetail extends Component {
 
   componentDidMount() {
     this.productInformations();
-    this.productDescription();
   }
 
   render() {
