@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+require('dotenv').config();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -33,6 +35,11 @@ const items = require('./routes/items');
 app.use('/api/category', category);
 app.use('/api', indexRouter);
 app.use('/api/items', items);
+
+// If no routes match, send them the React HTML.
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -18,7 +18,7 @@ class ProductDetail extends Component {
 
   productInformations() {
     const { id } = this.props.match.params;
-    axios.get(`http://localhost:5000/api/items/${id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/items/${ id }`)
       .then((response) => {
         this.setState({
           imageProduct: response.data.pictures[0].url,
@@ -34,7 +34,7 @@ class ProductDetail extends Component {
 
   productDescription() {
     const { id } = this.props.match.params;
-    axios.get(`http://localhost:5000/api/items/${id}/description`)
+    axios.get(`${process.env.REACT_APP_API_URL}/items/${ id }/description`)
       .then((response) => {
         this.setState({
           productDescription: response.data,
@@ -47,7 +47,7 @@ class ProductDetail extends Component {
 
   productCategory() {
     const { category_id } = this.state.productAllInformations;
-    axios.get(`http://localhost:5000/api/category/${category_id}`)
+    axios.get(`${process.env.REACT_APP_API_URL}/category/${ category_id }`)
       .then((response) => {
         this.setState({
           categoryProductName: response.data

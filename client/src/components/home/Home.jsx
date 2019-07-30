@@ -14,7 +14,7 @@ class Home extends Component {
   }
 
   callApiMeli() {
-    axios.get(`http://localhost:5000/api/items`)
+    axios.get(`${process.env.REACT_APP_API_URL}/items`)
       .then((response) => {
         this.setState({
           products: response.data.searchResult

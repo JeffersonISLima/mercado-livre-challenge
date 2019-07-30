@@ -1,17 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const axios  = require('axios');
+const axios = require('axios');
 
 //Get Product Category
 router.get('/:id', (req, res, next) => {
-  const { id } = req.params;
-  axios.get(`https://api.mercadolibre.com/categories/${ id }`)
+  const {
+    id
+  } = req.params;
+  axios.get(`${process.env.MERCADOLIBRE_API}/categories/${ id }`)
     .then((response) => {
-    res.json(response.data.name);
-  })
-  .catch((error) => {
-    throw new Error(error);
-  });
+      res.json(response.data.name);
+    })
+    .catch((error) => {
+      throw new Error(error);
+    });
 });
 
-module.exports = router; 
+module.exports = router;

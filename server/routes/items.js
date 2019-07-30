@@ -8,11 +8,11 @@ router.get('/', (req, res, next) => {
   const {
     search
   } = req.query;
-  axios.get(`https://api.mercadolibre.com/sites/MLA/search?limit=40&q=${ search }`)
+  axios.get(`${process.env.MERCADOLIBRE_API}/sites/MLA/search?limit=40&q=${ search }`)
     .then((response) => {
       const searchResult = [...response.data.results];
       response.data.results.map((categoryId) => {
-        axios.get(`https://api.mercadolibre.com/categories/${ categoryId.category_id }`)
+        axios.get(`${process.env.MERCADOLIBRE_API}/categories/${ categoryId.category_id }`)
           .then((response) => {
             res.json({
                 searchResult: searchResult,
@@ -34,7 +34,7 @@ router.get(`/:id`, (req, res, next) => {
   const {
     id
   } = req.params;
-  axios.get(`https://api.mercadolibre.com/items/${ id }`)
+  axios.get(`${process.env.MERCADOLIBRE_API}/items/${ id }`)
     .then((response) => {
       res.json(response.data);
     })
@@ -50,7 +50,7 @@ router.get(`/:id/description`, (req, res, next) => {
   const {
     id
   } = req.params;
-  axios.get(`https://api.mercadolibre.com/items/${ id }/description`)
+  axios.get(`${process.env.MERCADOLIBRE_API}/items/${ id }/description`)
     .then((getDescriptionProduct) => {
       res.json(getDescriptionProduct.data);
     })

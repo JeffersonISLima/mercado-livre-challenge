@@ -33,7 +33,7 @@ class SearchBox extends Component {
 
 		if (this.state.product.length !== 0) {
 			const { product } = this.state;
-			axios.get(`http://localhost:5000/api/items?search=${product}`)
+			axios.get(`${process.env.REACT_APP_API_URL}/items?search=${ product }`)
 				.then((response) => {
 					this.setState({
 						categoryProducty: response.data.categoryName,

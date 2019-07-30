@@ -21,10 +21,13 @@ npm install
 
 ## Uso 
 
-Digite npm start no terminal dentro das pastas pra iniciar ambos os servidores.
+Servidor: Para iniciar em modo de desenvolvimento digitar npm run dev no terminal.
 O server é executado na porta 5000.
+ ```sh
+npm run dev
+```
+Cliente: Para iniciar em modo de desenvolvimento digitar npm start no terminal.
 O client é executado na porta 3000.
-
  ```sh
 npm start
 ``` 
