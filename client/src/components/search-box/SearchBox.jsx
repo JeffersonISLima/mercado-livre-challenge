@@ -31,7 +31,8 @@ class SearchBox extends Component {
 		}
 
 		if (this.state.product.length !== 0) {
-			axios.get(`http://localhost:5000/api/items?search=${this.state.product}`)
+			const { product } = this.state;
+			axios.get(`http://localhost:5000/api/items?search=${ product }`)
 				.then((response) => {
 					this.setState({
 						categoryProducty: response.data.categoryName,
@@ -78,7 +79,7 @@ class SearchBox extends Component {
 										</div>
 
 										<div className="column-middle-search-box">
-											<div> <h2>R$ {product.price}</h2> {product.shipping.free_shipping ? <figure>{searchBar.freeShipping}</figure> : ''}</div>
+											<div> <h2>$ {product.price}</h2> {product.shipping.free_shipping ? <figure>{searchBar.freeShipping}</figure> : ''}</div>
 											<h4>{product.title}</h4>
 										</div>
 

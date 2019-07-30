@@ -21,8 +21,8 @@ class ProductDetail extends Component {
     axios.get(`http://localhost:5000/api/items/${id}`)
       .then((response) => {
         this.setState({
-          productAllInformations: response.data,
-          imageProduct: response.data.pictures[0].url
+          imageProduct: response.data.pictures[0].url,
+          productAllInformations: response.data
         });
         this.productCategory();
       })
@@ -64,36 +64,43 @@ class ProductDetail extends Component {
 
   render() {
     const product = {
-      paidMarket: <h2>{this.state.productAllInformations.accepts_mercadopago}</h2>,
-      imageProduct: <img src={this.state.imageProduct} alt="Imagem do Produto" />,
-      descriptionParagraph: <p>{this.state.productDescription.plain_text}</p>,
-      condition: <h6>{this.state.productAllInformations.condition}</h6>,
-      solds: <h6>{this.state.productAllInformations.sold_quantity}</h6>,
-      titleProduct: <h2>{this.state.productAllInformations.title}</h2>,
+      imageProduct: <img className="image-product" src={this.state.imageProduct} alt={this.state.productAllInformations.title} />,
+      descriptionParagraph: <p className="description-paragraph">{this.state.productDescription.plain_text}</p>,
+      titleProduct: <h2 className="title-product">{this.state.productAllInformations.title}</h2>,
+      paidMarket: <div>{this.state.productAllInformations.accepts_mercadopago}</div>,
+      descriptionTitle: <h1 className="description-title">Descrição do produto</h1>,
+      solds: <h3 id="solds">{this.state.productAllInformations.sold_quantity}</h3>,
+      condition: <h3>{this.state.productAllInformations.condition}</h3>,
       categoryProductName: <h2>{this.state.categoryProductName}</h2>,
       price: <h2>{this.state.productAllInformations.price}</h2>,
-      descriptionTitle: <h1>Descrição do produto</h1>,
-      buttom: <button>Comprar </button>
+      buttom: <button className="buy-button">Comprar</button>
     }
 
     return (
       <>
-        <section className="first-section-product-detail product-category border">
-          <h1>{product.categoryProductName}</h1>
+        <section className="first-section-product-detail product-category">
+          <span>{product.categoryProductName}</span>
         </section>
 
-        <section className="second-section-product-detail border">
+        <section className="second-section-product-detail">
           <div className="row-product-detail">
-            <div className="column-image-product-detail border">
-              <figure className="image-product border"> {product.imageProduct} </figure>
+            <div className="column-image-product-detail">
+              <figure className="image-product">{product.imageProduct}</figure>
             </div>
 
-            <div className="column-aux-product-detail border">
-              <span className="row">{product.condition} - {product.solds}</span>
+            <div className="column-aux-product-detail">
+              <span className="codition-and-solds">
+                <div>
+                  {product.condition}
+                </div>
+                <h3>-</h3>
+                {product.solds}
+                <h3>Vendidos</h3>
+              </span>
               <span>{product.titleProduct}</span>
-              <span>R$ {product.price}</span>
-              <div> {product.buttom} </div>
-              <h2>Mercado pago: {product.paidMarket
+              <div className="price-product"> <h2>$</h2> <div>{product.price}</div></div>
+              <div>{product.buttom}</div>
+              <h2 className="paid-market">Mercado pago: {product.paidMarket
                 ? <span className="paid-market-true">Sim</span>
                 : <span className="paid-market-false">Não</span>}
               </h2>
@@ -101,7 +108,7 @@ class ProductDetail extends Component {
           </div>
         </section>
 
-        <section className="third-section-product-detail border">
+        <section className="third-section-product-detail">
           <span>{product.descriptionTitle}</span>
           <span>{product.descriptionParagraph}</span>
         </section>
