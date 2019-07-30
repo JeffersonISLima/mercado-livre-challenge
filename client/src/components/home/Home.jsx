@@ -32,19 +32,21 @@ class Home extends Component {
   render() {
     const randomOffersSecondSection = _.shuffle(this.state.products).slice(0, 4);
     const randomOffersThirdSection = _.shuffle(this.state.products).slice(0, 4);
+    const Fragment = React.Fragment;
+
     return (
-      <>
+      <Fragment>
         <section className='first-section'>
           <h1>Ofertas da semana</h1>
         </section>
 
         <section className='second-section row'>
           {randomOffersSecondSection.map((product, idx) =>
-            <>
+            <Fragment key={idx}>
               <div className="column-aux"></div>
 
               <div className="column-middle">
-                <Link to={`/items/${product.id}`} key={idx}>
+                <Link to={`/items/${product.id}`}>
                   <figure>
                     <img className="img-thumbnail" src={product.thumbnail} alt={product.title} />
                   </figure>
@@ -56,18 +58,18 @@ class Home extends Component {
               </div>
 
               <div className="column-aux"></div>
-            </>
+            </Fragment>
           )
           }
         </section>
 
         <section className='third-section'>
           {randomOffersThirdSection.map((product, idx) =>
-            <>
+            <Fragment key={idx}>
               <div className="column-aux"></div>
 
               <div className="column-middle">
-                <Link to={`/items/${product.id}`} key={idx}>
+                <Link to={`/items/${product.id}`}>
                   <figure>
                     <img className="img-thumbnail" src={product.thumbnail} alt={product.title} />
                   </figure>
@@ -79,11 +81,11 @@ class Home extends Component {
               </div>
 
               <div className="column-aux"></div>
-            </>
+            </Fragment>
           )
           }
         </section>
-      </>
+      </Fragment>
     );
   }
 }
