@@ -26,7 +26,8 @@ class SearchBox extends Component {
 			input: <input type="search" name="product" value={this.state.product} placeholder="Buscar produtos, marcas e muito mais..." onChange={e => this.handleChange(e)} />,
 			freeShipping: <img src="../images/free-shipping.png" alt="Imagem de um caminhão informando o frete grátis." />,
 			logo: <img src="../images/logo.png" title="Home Page" alt="Imagem do logotipo do mercado livre." />,
-			url: 'http://localhost:3000/items',
+			urlProduction: 'https://mercado-livre-challenge.herokuapp.com/items',
+			urlLocal: 'http://localhost:3000/items',
 			urlObject: window.location.href
 		}
 		const Fragment = React.Fragment;
@@ -36,7 +37,6 @@ class SearchBox extends Component {
 			axios.get(`${process.env.REACT_APP_API_URL}/items?search=${ product }`)
 				.then((response) => {
 					this.setState({
-						categoryProducty: response.data.categoryName,
 						titleProduct: response.data.searchResult
 					});
 				})
@@ -45,7 +45,9 @@ class SearchBox extends Component {
 				});
 		}
 
-		if ((this.state.product.length !== 0) && (searchBar.urlObject === searchBar.url)) {
+		if ((this.state.product.length !== 0)
+			&& ((searchBar.urlObject === searchBar.urlLocal)
+				|| (searchBar.urlObject === searchBar.urlProduction))) {
 			return (
 				<>
 					<section className='search-box'>
@@ -65,7 +67,7 @@ class SearchBox extends Component {
 					<section className="second-section-search-box">
 						<div className="product-category">
 							<div>
-								<h2>{this.state.categoryProducty}</h2>
+								<h2>{this.state.categoryProduct}</h2>
 							</div>
 						</div>
 					</section>
